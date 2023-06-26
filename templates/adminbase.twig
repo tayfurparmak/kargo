@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}KARGO!
+			{% endblock %}
+		</title>
+
+		{% block head %} {% include('admin/head.html.twig' ) %} {% endblock %}
+	</head>
+	<body >
+		 	{% block header %} {% include('admin/header.html.twig' ) %} {% endblock %}
+		  {% block sidebar %}{% include('admin/sidebar.html.twig' ) %} {% endblock %}
+			{% block body %} {% include('admin/admin/index.html.twig' ) %}  {% endblock %}
+			{% block footer %} {% include('admin/footer.hmtl.twig' ) %} {% endblock %}
+		</body>	
+	</html>

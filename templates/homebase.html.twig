@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  <meta charset="utf-8">
+  <title>Kargo Gönderi </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{%block description %}kargo sitesi {% endblock %}">
+	  <meta name="keywords" content="{%block keywords %} aktarma {% endblock %}">
+  <meta name="author" content="tayfur parmak">
+		<title>
+			{% block title %}Kargo Gönderi Oluşturma
+			{% endblock %}
+		</title>
+
+		{% block head %} {% include('Home/head.html.twig' ) %} {% endblock %}
+			{% block stylesheet %} {% endblock %}
+	</head>
+	<body >
+		 	{% block header %} {% include('Home/header.html.twig' ) %} {% endblock %}
+		  {% block sidebar %} {% endblock %}
+			
+			{% block body %}  {% endblock %}
+				{% block footer %} {% include('Home/footer.html.twig' ) %}  {% endblock %}
+			{% block javascript %} {% endblock %}
+		</body>	
+	</html>
