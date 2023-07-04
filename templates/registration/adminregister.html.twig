@@ -31,8 +31,17 @@
 </head>
 
 <body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
 
-        <!-- Sign In Start -->
+
+        <!-- Sign Up Start -->
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
@@ -41,54 +50,20 @@
                             <a href="index.html" class="">
                                 <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
                             </a>
-                            <h3>Sign In</h3>
+                            <h3>Üye Ol</h3>
                         </div>
-<form action="{{ path('app_login') }}" method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+			{{ form_start(registrationForm) }}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('/templates/homebase.html.twig') }}">Logout</a>
-        </div>
-    {% endif %}
-
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="username">Email</label>
-    <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="_password" id="inputPassword" class="form-control" required>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-    <input type="hidden" name="_target_path" value="{{ path('app_redirect') }}"/>
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
-    <button class="btn btn-lg btn-primary" type="submit" >
-        Sign in
-    </button>
-</form>
- <a href="">Forgot Password</a>
-                        </div>
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
-                        <p class="text-center mb-0">Don't have an Account? <a href="">Sign Up</a></p>
+			
+			<button type="submit" class="btn btn-primary">Kayıt Ol</button>
+		        	{{ form_end(registrationForm) }}
+                       <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
+                        <p class="text-center mb-0">Already have an Account? <a href="">Sign In</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Sign In End -->
+        <!-- Sign Up End -->
     </div>
 
     <!-- JavaScript Libraries -->

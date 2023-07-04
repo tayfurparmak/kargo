@@ -3,25 +3,20 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class SecurityController extends AbstractController
 {
-    
-    public function __construct(private UrlGeneratorInterface $urlGenerator)
-    {
-    }
-
     #[Route(path: '/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils,Request $request): Response
     {
-       //  if ($this->getUser()) {
-         //   return $this->redirectToRoute(route:'admin');
-    //     }
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -31,23 +26,19 @@ class SecurityController extends AbstractController
         return $this->render('security/adminlogin.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
-    #[Route(path: '/admin/login', name: 'admin_login')]
-    public function adminlogin(AuthenticationUtils $authenticationUtils): Response
-    {
-       // if ($this->getUser()) {
-         //   return $this->redirectToRoute(route:'admin');
-       // }
-
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
-
-        return $this->render('security/adminlogin.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
-    }
     #[Route(path: '/logout', name: 'app_logout')]
-    public function logout()
+    public function logout(): void
     {
-        return new RedirectResponse($this->urlGenerator->generate('app_homepage'));
+        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    #[Route('/redirect', name: 'app_redirect')]
+    public function userRedirect(): RedirectResponse
+    {
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_admin_admin');
+        }
+
+        return $this->redirectToRoute('app_home');
     }
 }
