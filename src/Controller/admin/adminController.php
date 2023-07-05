@@ -12,7 +12,7 @@ class AdminController extends AbstractController
     public function index(): Response
     {
         return $this->render('admin/admin/index.html.twig', [
-            'controller_name' => 'adminController',
+            'controller_name' => 'AdminController',
         ]);
     }
 }
