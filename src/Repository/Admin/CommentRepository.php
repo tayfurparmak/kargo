@@ -2,26 +2,26 @@
 
 namespace App\Repository\Admin;
 
-use App\Entity\Admin\Cargo;
+use App\Entity\Admin\Comment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Cargo>
+ * @extends ServiceEntityRepository<Comment>
  *
- * @method Cargo|null find($id, $lockMode = null, $lockVersion = null)
- * @method Cargo|null findOneBy(array $criteria, array $orderBy = null)
- * @method Cargo[]    findAll()
- * @method Cargo[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Comment|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Comment|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Comment[]    findAll()
+ * @method Comment[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CargoRepository extends ServiceEntityRepository
+class CommentRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Cargo::class);
+        parent::__construct($registry, Comment::class);
     }
 
-    public function save(Cargo $entity, bool $flush = false): void
+    public function save(Comment $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class CargoRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Cargo $entity, bool $flush = false): void
+    public function remove(Comment $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class CargoRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Cargo[] Returns an array of Cargo objects
+//     * @return Comment[] Returns an array of Comment objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class CargoRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Cargo
+//    public function findOneBySomeField($value): ?Comment
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')
