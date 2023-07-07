@@ -1,40 +1,59 @@
- <div id="wrapper">
-  <header>
-      <!-- Navbar
-    ================================================== -->
-      <div class="navbar navbar-static-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <!-- logo -->
-            <div class="logo" style="width: 100px;">
-              <a href="index.html"><img src="{{asset ('assets')}}/img/EX.png" alt="" /></a>
-            </div>
-            <!-- end logo -->
+<div id="wrapper">
+	<header>
+		<!-- Navbar
+				    ================================================== -->
+		<div class="navbar navbar-static-top">
+			<div class="navbar-inner">
+				<div
+					class="container">
+					<!-- logo -->
+					<div class="logo" style="width: 100px;">
+						<a href="index.html"><img src="{{asset ('assets')}}/img/EX.png" alt=""/></a>
+					</div>
+					<!-- end logo -->
 
-            <!-- top menu -->
-            <div class="navigation">
-              <nav>
-                <ul class="nav topnav" style="margin-top: 50px;">
-                  <li >
-                    <a href="#"><i class="icon-home"></i> Ana Sayfa </a>
-                  </li>
-                   <a href="/about"><i class="icon-info-sign"></i> About Us <i class="icon-angle-down"></i></a>
-                  <li >
-                    <a href="portfolio-2cols.html"><i class="icon-briefcase"></i> Sizden Gelenler <i class="icon-angle-down"></i></a>
-                    </li>
-                  <li>
-                    <a href="contact.html"><i class="icon-envelope-alt"></i> İletişim</a>
-                  </li>
-                  
-                </ul>
-              </nav>
-            </div>
-            <!-- end menu -->
+					<!-- top menu -->
+					<div class="navigation">
+						<nav>
+							<ul class="nav topnav" style="margin-top: 50px;">
+								<li>
+									<a href="{{ path('app_home') }}">
+										<i class="icon-home"></i>
+										Ana Sayfa
+									</a>
+								</li>
+								<li>
+									<a href="{{ path('app_about') }}">
+										<i class="icon-info-sign"></i>
+										Hakkımızda
+									</a>
+								</li>
+								<li>
+									<a href="portfolio-2cols.html">
+										<i class="icon-briefcase"></i>
+										Sizden Gelenler
+										<i class="icon-angle-down"></i>
+									</a>
+								</li>
+								{% if app.user %}
+									<li>
+										<a href="{{ path('app_logout') }}">
+											<i class="icon-signout"></i>
+											Çıkış Yap</a>
+									</li>
+								{% else %}
+									<li>
+										<a href="{{ path('app_login') }}">
+											<i class="icon-signin"></i>
+											Giriş Yap</a>
+									</li>
+								{% endif %}
+							</ul>
+						</nav>
+					</div>
+					<!-- end menu -->
 
-          </div>
-        </div>
-      </div>
-    </header>
-
-
-    
+				</div>
+			</div>
+		</div>
+	</header>
