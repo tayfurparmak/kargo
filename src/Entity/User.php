@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -29,6 +31,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column]
     private ?bool $enabled = false;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Cargo::class)]
+    private Collection $cargos;
+
+    public function __construct()
+    {
+        $this->cargos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -108,6 +118,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEnabled(bool $enabled): static
     {
         $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cargo>
+     */
+    public function getCargos(): Collection
+    {
+        return $this->cargos;
+    }
+
+    public function addCargo(Cargo $cargo): static
+    {
+        if (!$this->cargos->contains($cargo)) {
+            $this->cargos->add($cargo);
+            $cargo->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCargo(Cargo $cargo): static
+    {
+        if ($this->cargos->removeElement($cargo)) {
+            // set the owning side to null (unless already changed)
+            if ($cargo->getUser() === $this) {
+                $cargo->setUser(null);
+            }
+        }
 
         return $this;
     }

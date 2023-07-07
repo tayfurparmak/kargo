@@ -12,15 +12,15 @@
 			{% endblock %}
 		</title>
 
-		{% block head %} {% include('Home/head.html.twig' ) %} {% endblock %}
+		{% block head %} {% include('home/head.html.twig' ) %} {% endblock %}
 			{% block stylesheet %} {% endblock %}
 	</head>
 	<body >
-		 	{% block header %} {% include('Home/header.html.twig' ) %} {% endblock %}
-		  {% block sidebar %} {% endblock %}
+		 	{% block header %} {% include('home/header.html.twig' ) %} {% endblock %}
+		  {% block slider %} {% include('home/slider.html.twig' ) %} {% endblock %}
 			
 			{% block body %}  {% endblock %}
-				{% block footer %} {% include('Home/footer.html.twig' ) %}  {% endblock %}
+				{% block footer %} {% include('home/footer.html.twig' ) %}  {% endblock %}
 			{% block javascript %} {% endblock %}
 		</body>	
 	</html>

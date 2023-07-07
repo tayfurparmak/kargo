@@ -1,0 +1,42 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Cargo{% endblock %}
+
+{% block body %}
+    <h1>KARGO</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cargo.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ cargo.title }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ cargo.country }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ cargo.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ cargo.createdAt ? cargo.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ cargo.updatedAt ? cargo.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cargo_index') }}">Geri </a>
+
+    <a href="{{ path('app_cargo_edit', {'id': cargo.id}) }}">Güncelle</a>
+
+    {{ include('admin/cargo/_delete_form.html.twig') }}
+{% endblock %}

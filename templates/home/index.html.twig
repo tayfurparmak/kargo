@@ -3,10 +3,12 @@
 {% block title %}Kargo Gönderi Oluşturma{% endblock %}
 {% block keywords %}Kargo Gönderi Oluşturma{% endblock %}
 {% block description %}Kargo Gönderi Oluşturma{% endblock %}
-{% block slider %} {% include('Home/slider.html.twig') %} {% endblock %}
+
 
 {% block body %}
- <section id="maincontent">
+ 
+  
+    <section id="maincontent">
       <div class="container">
 
         <div class="row">
@@ -14,58 +16,80 @@
             <div class="call-action">
 
               <div class="text">
-                <h2>You should love this stand out call action</h2>
-                <p>
-                  Hover this call action box and see the call action button play nice animation to seek attention
-                </p>
+                <h2>İletişim bilgilerinizi girin.Size ulaşalım</h2>
+               
               </div>
               <div class="cta">
                 <a class="btn btn-large btn-theme" href="#">
-							<i class="icon-plane icon-white"></i> Get a quote </a>
+							<i class="icon-plane icon-white"></i> Fiyat Teklifi Al... </a>
               </div>
 
             </div>
             <!-- end tagline -->
           </div>
         </div>
-
+        {% if is_granted('ROLE_USER') %}
         <div class="row">
+          <div class="span12">
+            <div class="call-action">
+
+              <div class="text">
+                <h2>Kargo gönderisi oluşturmak için tıklayınız.</h2>
+               
+              </div>
+            <div class="cta">
+    <a class="btn btn-large btn-theme" href="{{ path('web_cargo_new') }}">
+        <i class="icon-plane icon-white"></i> Kargo Oluştur
+    </a>
+</div>
+   
+            </div>
+            <!-- end tagline -->
+          </div>
+        </div>
+        {% endif %}
+        <div class="row">
+          <h2>Hizmetlerimiz</h2>
           <div class="span3 features e_pulse">
-            <img src="{{asset ('assets')}}/img/dummies/img1.jpg" alt="" />
+            <img src="
+{{asset ('assets')}}/img/dummies/images.jpg" alt="" />
             <div class="box">
               <div class="divcenter">
                 <a href="#"><i class="icon-circled icon-48 icon-magic active icon"></i></a>
-                <h4>Responsive <br />twitter bootstrap</h4>
+                <h4>Bilgilendirme</h4>
               </div>
             </div>
           </div>
 
           <div class="span3 features e_pulse">
-            <img src="{{asset ('assets')}}/img/dummies/img2.jpg" alt="" />
+            <img src="
+{{asset ('assets')}}/img/dummies/live-chat.jpg" alt="" />
             <div class="box">
               <div class="divcenter">
                 <a href="#"><i class="icon-circled icon-48 icon-briefcase icon"></i></a>
-                <h4>Unparalleled <br />premium support</h4>
+                <h4>7/24 Canlı Destek</h4>
               </div>
             </div>
           </div>
 
           <div class="span3 features e_pulse">
-            <img src="{{asset ('assets')}}/img/dummies/img3.jpg" alt="" />
+            <img src="
+{{asset ('assets')}}/img/dummies/Yurtdışı-kargo-gönderimi-640x320.jpg" alt="" />
             <div class="box">
               <div class="divcenter">
                 <a href="#"><i class="icon-circled icon-48 icon-cogs icon"></i></a>
-                <h4>Valid <br />HTML code</h4>
+                <h4>Tüm <br />Ülkelere kargo</h4>
               </div>
             </div>
           </div>
 
           <div class="span3 features e_pulse">
-            <img src="{{asset ('assets')}}/img/dummies/img4.jpg" alt="" />
+            <img src="
+{{asset ('assets')}}/img/dummies/61wz-fEep7S._AC_UF1000,1000_QL80_.jpg" alt="" />
             <div class="box">
               <div class="divcenter">
                 <a href="#"><i class="icon-circled icon-48 icon-bullhorn icon"></i></a>
-                <h4>Flexible <br />multi usage</h4>
+                <h4> Tüm paketlerinizi<br /> kargolama imkanı</h4>
               </div>
             </div>
           </div>
@@ -73,108 +97,116 @@
 
         <div class="row">
           <div class="span12">
-            <h4 class="rheading">Recent works<span></span></h4>
-            <div class="row">
-              <div class="span3">
-
-                <p class="hidden-phone">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in lacus rhoncus elit egestas luctus. Nullam at lectus augue.
-                </p>
-
-                <a href="#" class="btn btn-theme">Read More</a>
-              </div>
-
-              <div class="span9">
+            <h4 class="rheading">Referanslarımız<span></span></h4>
+            <div class="row">  
+              <div class="span12">
                 <div id="latest-work" class="carousel btleft">
                   <div class="carousel-wrapper">
                     <ul class="da-thumbs">
 
                       <li>
-                        <img src="{{asset ('assets')}}/img/dummies/work1.jpg" alt="" />
+                        <img src="{{asset ('assets')}}/img/dummies/thumbs_b_c_089459599f9ab9a93c5e36f2ae8bc725.jpg" style="height: 180px;" alt="" />
                         <article class="da-animate da-slideFromRight">
-                          <a class="zoom" data-pretty="prettyPhoto" href="{{asset ('assets')}}/img/dummies/big1.jpg">
+                          <a class="zoom" data-pretty="prettyPhoto" href="{{asset ('assets')}}/img/dummies/thumbs_b_c_089459599f9ab9a93c5e36f2ae8bc725.jpg">
 														<i class="icon-zoom-in icon-rounded icon-48 active"></i>
 													</a>
-                          <a href="portfolio-detail.html">
-														<i class="icon-link icon-rounded icon-48 active"></i>
-													</a>
+                        
                           <div class="hidden-tablet">
-                            <p>Serenity theme</p>
+                            <p>Akbank</p>
                           </div>
                         </article>
                       </li>
 
                       <li>
-                        <img src="{{asset ('assets')}}/img/dummies/work2.jpg" alt="" />
+                        <img src="{{asset ('assets')}}/img/dummies/Turk-Telekom-Symbole.jpg"  style="height: 180px;"alt="" />
                         <article class="da-animate da-slideFromRight">
-                          <a class="zoom" data-pretty="prettyPhoto" href="{{asset ('assets')}}/img/dummies/big1.jpg">
+                          <a class="zoom" data-pretty="prettyPhoto" href="{{asset ('assets')}}/img/dummies/Turk-Telekom-Symbole.jpg">
 														<i class="icon-zoom-in icon-rounded icon-48 active"></i>
 													</a>
-                          <a href="portfolio-detail.html">
-														<i class="icon-link icon-rounded icon-48 active"></i>
-													</a>
+                         
                           <div class="hidden-tablet">
-                            <p>Dark apps</p>
+                            <p>Türk telekom</p>
                           </div>
                         </article>
                       </li>
 
                       <li>
-                        <img src="{{asset ('assets')}}/img/dummies/work3.jpg" alt="" />
+                        <img src="{{asset ('assets')}}/img/dummies/LosevLogoTwitterMetaTagCard.jpg" alt="" />
                         <article class="da-animate da-slideFromRight">
-                          <a class="zoom" data-pretty="prettyPhoto" href="{{asset ('assets')}}/img/dummies/big1.jpg">
+                          <a class="zoom" data-pretty="prettyPhoto" href="{{asset ('assets')}}/img/dummies/LosevLogoTwitterMetaTagCard.jpg">
 														<i class="icon-zoom-in icon-rounded icon-48 active"></i>
 													</a>
-                          <a href="portfolio-detail.html">
-														<i class="icon-link icon-rounded icon-48 active"></i>
-													</a>
+                         
                           <div class="hidden-tablet">
-                            <p>Mobile apps</p>
+                            <p>LÖSEV</p>
                           </div>
                         </article>
                       </li>
 
                       <li>
-                        <img src="{{asset ('assets')}}/img/dummies/work4.jpg" alt="" />
+                        <img src="{{asset ('assets')}}/img/dummies/indir.png"  style="height: 180px;"alt="" />
                         <article class="da-animate da-slideFromRight">
-                          <a class="zoom" data-pretty="prettyPhoto" href="{{asset ('assets')}}/img/dummies/big1.jpg">
+                          <a class="zoom" data-pretty="prettyPhoto" href="{{asset ('assets')}}/img/dummies/indir.png">
 														<i class="icon-zoom-in icon-rounded icon-48 active"></i>
 													</a>
-                          <a href="portfolio-detail.html">
-														<i class="icon-link icon-rounded icon-48 active"></i>
-													</a>
+                        
                           <div class="hidden-tablet">
-                            <p>Mobile template</p>
+                            <p>Milliyet</p>
                           </div>
                         </article>
                       </li>
 
                       <li>
-                        <img src="{{asset ('assets')}}/img/dummies/work5.jpg" alt="" />
+                        <img src="{{asset ('assets')}}/img/dummies/indir.jpg" alt="" />
                         <article class="da-animate da-slideFromRight">
-                          <a class="zoom" data-pretty="prettyPhoto" href="{{asset ('assets')}}/img/dummies/big1.jpg">
+                          <a class="zoom" data-pretty="prettyPhoto" href="{{asset ('assets')}}/img/dummies/indir.jpg">
 														<i class="icon-zoom-in icon-rounded icon-48 active"></i>
 													</a>
-                          <a href="portfolio-detail.html">
-														<i class="icon-link icon-rounded icon-48 active"></i>
-													</a>
+                         
                           <div class="hidden-tablet">
-                            <p>Business theme</p>
+                            <p>Torku</p>
                           </div>
                         </article>
                       </li>
 
                       <li>
-                        <img src="{{asset ('assets')}}/img/dummies/work6.jpg" alt="" />
+                        <img src="{{asset ('assets')}}/img/dummies/channels4_profile.jpg" alt="" />
                         <article class="da-animate da-slideFromRight">
-                          <a class="zoom" data-pretty="prettyPhoto" href="{{asset ('assets')}}/img/dummies/big1.jpg">
+                          <a class="zoom" data-pretty="prettyPhoto" href="{{asset ('assets')}}/img/dummies/channels4_profile.jpg">
 														<i class="icon-zoom-in icon-rounded icon-48 active"></i>
 													</a>
-                          <a href="portfolio-detail.html">
-														<i class="icon-link icon-rounded icon-48 active"></i>
-													</a>
+                        
                           <div class="hidden-tablet">
-                            <p>Portfolio graphic</p>
+                            <p>Ülker</p>
+                          </div>
+                        </article>
+                      </li>
+                      <li>
+                        <img src="
+{{asset ('assets')}}/img/dummies/indir (1).png"  style="height: 180px;"alt="" />
+                        <article class="da-animate da-slideFromRight">
+                          <a class="zoom" data-pretty="prettyPhoto" href="
+{{asset ('assets')}}/img/dummies/indir (1).png">
+														<i class="icon-zoom-in icon-rounded icon-48 active"></i>
+													</a>
+                        
+                          <div class="hidden-tablet">
+                            <p>Nesine</p>
+                          </div>
+                        </article>
+                      </li>
+
+                      <li>
+                        <img src="
+{{asset ('assets')}}/img/dummies/indir (2).png"  style="height: 180px;"alt="" />
+                        <article class="da-animate da-slideFromRight">
+                          <a class="zoom" data-pretty="prettyPhoto" href="
+{{asset ('assets')}}/img/dummies/indir (2).png">
+														<i class="icon-zoom-in icon-rounded icon-48 active"></i>
+													</a>
+                        
+                          <div class="hidden-tablet">
+                            <p>Koç</p>
                           </div>
                         </article>
                       </li>
@@ -189,4 +221,6 @@
         </div>
 
       </div>
+    </section>
+   
 {% endblock %}

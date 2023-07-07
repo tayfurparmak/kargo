@@ -1,0 +1,43 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Cargo index{% endblock %}
+
+{% block body %}
+    <h1>Cargo index</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Country</th>
+                <th>IsActive</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cargo in cargos %}
+            <tr>
+                <td>{{ cargo.id }}</td>
+                <td>{{ cargo.title }}</td>
+                <td>{{ cargo.country|country_name('tr') }}</td>
+                <td>{{ cargo.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ cargo.createdAt ? cargo.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ cargo.updatedAt ? cargo.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_cargo_show', {'id': cargo.id}) }}">Göster</a>
+                    <a href="{{ path('app_cargo_edit', {'id': cargo.id}) }}">Düzenle</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cargo_new') }}">Yeni Oluştur</a>
+{% endblock %}

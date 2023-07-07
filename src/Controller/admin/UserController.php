@@ -2,17 +2,17 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Admin\Cargo;
 use App\Entity\User;
-use App\Form\User1Type;
-use App\Repository\Admin\CargoRepository;
+use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[Route('/admin/user')]
+#[Route('/user')]
+#[IsGranted('ROLE_ADMIN')]
 class UserController extends AbstractController
 {
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
@@ -27,7 +27,7 @@ class UserController extends AbstractController
     public function new(Request $request, UserRepository $userRepository): Response
     {
         $user = new User();
-        $form = $this->createForm(User1Type::class, $user);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -53,7 +53,7 @@ class UserController extends AbstractController
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, UserRepository $userRepository): Response
     {
-        $form = $this->createForm(User1Type::class, $user);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -78,6 +78,6 @@ class UserController extends AbstractController
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
-
+ 
    
 }

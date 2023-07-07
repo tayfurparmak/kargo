@@ -1,0 +1,11 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}New Cargo{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Kargo oluşturunuz</h1>
+
+    {{ include('/cargo/_form.html.twig') }}
+
+    <a href="{{ path('app_cargo_index') }}">Geri</a>
+{% endblock %}
